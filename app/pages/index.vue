@@ -23,7 +23,7 @@ const stepper = useTemplateRef('stepper')
 
 <template>
   <div class="full p-4">
-    <UStepper :items="items" ref="stepper" :ui="{ content:'p-8 mx-auto'}" class="w-full" size="sm" color="neutral">
+    <UStepper :items="items" ref="stepper" :ui="{ content:'lg:p-8 p-2 mx-auto'}" class="w-full" size="sm" color="neutral">
       <template #Vehicle>
         <BookingStepsBookingStep />
       </template>
