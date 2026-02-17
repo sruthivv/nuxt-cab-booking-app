@@ -7,21 +7,56 @@
           class="space-y-6"
           @submit="onSubmit"
         >
+          <UFormField
+            label="Pick up date"
+            name="Pick up date"
+            class="ml-8"
+          >
+            <UInputDate ref="inputDate" class="w-full">
+              <template #trailing>
+                <UPopover :reference="inputDate?.inputsRef[3]?.$el">
+                  <UButton
+                    color="info"
+                    variant="link"
+                    size="sm"
+                    icon="i-lucide-calendar"
+                    aria-label="Select a date"
+                    class="px-0"
+                  />
+
+                  <template #content>
+                    <UCalendar v-model="modelValue" color="info" class="p-2" />
+                  </template>
+                </UPopover>
+              </template>
+            </UInputDate>
+          </UFormField>
+          <UFormField
+            label="Pick up time"
+            name="Pick up time"
+            class="ml-8"
+          >
+            <UInput
+              v-model="time"
+              type="time"
+              color="info"
+              class="w-full"
+            />
+          </UFormField>
           <UTimeline :items="timelineItems" size="xs" :ui="{separator:'bg-gray-200', wrapper:'pb-3'}" class="w-full">
             <template #date="{ item, index }">
               <!-- Pickup -->
               <UFormField
                 v-if="item.username === 'Pickup location'"
-                label="PICK UP LOCATION"
-                name="pickup"
+                label="Pick up location"
               >
-                <UInput v-model="state.pickup" placeholder="City, Address, Airport, Hotel..." class="w-full" :ui="{base:'rounded-none'}">
+                <UInput v-model="state.pickup" placeholder="City, Address, Airport, Hotel..." class="w-full" color="info" :ui="{base:'rounded-none'}">
                   <template #trailing>
                     <UButton
                       icon="i-lucide-map-pin"
                       variant="link"
                       size="sm"
-                      class="text-[#a79779]"
+                      color="info"
                     />
                   </template>
                 </UInput>
@@ -32,7 +67,8 @@
                     size="sm"
                     @click="addStop"
                     icon="i-lucide-circle-plus"
-                    class="text-[#a79779] hover:bg-gray-50"
+                    color="info"
+                    class="rounded-full"
                   >
                     Add Stop
                   </UButton>
@@ -42,16 +78,15 @@
               <!-- Dropoff -->
               <UFormField
                 v-else-if="item.username === 'Dropoff location'"
-                name="dropoff"
-                label="DROP OFF LOCATION"
+                label="Drop off location"
               >
-                <UInput v-model="state.dropoff" class="w-full" :ui="{base:'rounded-none'}" placeholder="City, Address, Airport, Hotel...">
+                <UInput v-model="state.dropoff" class="w-full" :ui="{base:'rounded-none'}" color="info" placeholder="City, Address, Airport, Hotel...">
                   <template #trailing>
                     <UButton
                       icon="i-lucide-map-pin"
                       variant="link"
                       size="sm"
-                      class="text-[#a79779]"
+                      color="info"
                     />
                   </template>
                 </UInput>
@@ -59,14 +94,14 @@
 
               <!-- Intermediate Stops -->
               <div v-else class="flex flex-row gap-2 w-full justify-between items-end">
-                <UFormField :label="item.username" class="flex-1 basis-2/3">
-                  <UInput v-model="item.value" placeholder="City, Address, Airport, Hotel..."  :ui="{base:'rounded-none'}">
+                <UFormField :label="item.username" class="flex-1 basis-11/12">
+                  <UInput v-model="item.value" placeholder="City, Address, Airport, Hotel..." class="w-full" color="info" :ui="{base:'rounded-none'}">
                     <template #trailing>
                         <UButton
                           icon="i-lucide-map-pin"
                           variant="link"
                           size="sm"
-                          class="text-[#a79779] w-[1/3]"
+                          color="info"
                         />
                       </template>
                   </UInput>
@@ -77,13 +112,13 @@
                   color="neutral"
                   variant="ghost"
                   size="sm"
-                  class="shrink-0 hover:bg-gray-50 basis-1/3"
+                  class="shrink-0 hover:bg-gray-50 basis-1/12 justify-center"
                   @click="removeStop(index - 1)"
                 />
               </div>
             </template>
           </UTimeline>
-          <UButton type="submit" class="w-full bg-[#a79779] hover:bg-[#a79779] justify-center rounded-full">
+          <UButton type="submit" color="info" class="w-full justify-center rounded-full">
             Search Cab
           </UButton>
         </UForm>
