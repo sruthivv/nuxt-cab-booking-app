@@ -5,7 +5,7 @@
     </template>
 
     <template #right>
-      <BookingCardsVehicleCard v-if="vehicleCard" />
+      <BookingCardsVehicleCard v-if="vehicleCard" @select-vehicle="$emit('selected')" />
       <img v-else src="/assets/homepageimg-BDf4wDht.webp" />
     </template>
   </BookingLayoutStepLayout>

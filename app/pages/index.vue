@@ -19,13 +19,16 @@ const items = [
 ] satisfies StepperItem[]
 
 const stepper = useTemplateRef('stepper')
+const selectVeh = (e) => {
+ stepper.value.next()
+}
 </script>
 
 <template>
   <div class="full p-4">
     <UStepper :items="items" ref="stepper" :ui="{ content:'lg:p-8 p-2 mx-auto'}" class="w-full" size="sm" color="neutral">
       <template #Vehicle>
-        <BookingStepsBookingStep />
+        <BookingStepsBookingStep @selected="selectVeh" />
       </template>
 
       <template #Address>

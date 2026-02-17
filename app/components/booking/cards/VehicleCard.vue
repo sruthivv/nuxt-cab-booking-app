@@ -3,6 +3,8 @@ const items = [
   'https://business.rolzo.com/api/cdn/storage/images/Qyq5ydzgja5etvA9v.png',
   'https://business.rolzo.com/api/cdn/storage/images/Qyq5ydzgja5etvA9v.png'  
 ]
+const emit = defineEmits()
+
 const itemsCard = ref(['System', 'Light', 'Dark'])
 </script>
 <template>
@@ -32,7 +34,7 @@ const itemsCard = ref(['System', 'Light', 'Dark'])
     </UCarousel>
     <div class="flex flex-row justify-between py-2 px-4">
       <UBadge class="font-bold rounded-full" variant="soft"> 165.00GBP</UBadge>
-      <UButton icon="i-lucide-arrow-right" class="bg-[#a79779] hover:bg-[#a79779] rounded-full " color="neutral" variant="ghost"></UButton>
+      <UButton icon="i-lucide-arrow-right" class="rounded-full"  @click="$emit('selectVehicle')" color="info" variant="subtle"></UButton>
     </div> 
     <div class="flex justify-center w-full">
       <UCollapsible class="w-full flex flex-col gap-2">
