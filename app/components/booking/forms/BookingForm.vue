@@ -118,7 +118,7 @@
               </div>
             </template>
           </UTimeline>
-          <UButton type="submit" color="info" class="w-full justify-center rounded-full">
+          <UButton type="button" @click="onClick" color="info" class="w-full justify-center rounded-full">
             Search Cab
           </UButton>
         </UForm>
@@ -130,6 +130,7 @@ import type { icons } from '@iconify-json/lucide/index.js'
 import type { TimelineItem, FormError, FormSubmitEvent } from '@nuxt/ui'
 
 const showCars = ref(false)
+const emit = defineEmits('change')
 /* ---------- FORM STATE ---------- */
 const state = reactive({
   pickup: '',
@@ -190,6 +191,11 @@ function onSubmit(event: FormSubmitEvent<typeof state>) {
   })
 
   console.log('FORM DATA:', event.data)
+}
+
+const onClick = () => {
+  showCars.value = true
+  emit('change',showCars)
 }
 </script>
 
