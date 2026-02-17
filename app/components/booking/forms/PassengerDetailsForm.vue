@@ -101,12 +101,12 @@
         </UInput>
       </UFormField>
     </div>
-    <div class="my-4 text-end">
+    <!-- <div class="my-4 text-end">
       <UButton
         color="info"
         class="rounded-full uppercase justify-center h-10"
       >continue </UButton>
-    </div>
+    </div> -->
   </div>
 </template>
 

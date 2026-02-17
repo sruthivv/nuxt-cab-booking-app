@@ -38,26 +38,30 @@ const stepper = useTemplateRef('stepper')
         <BookingStepsPaymentStep />
       </template>
     </UStepper>
-    <div class="flex gap-2 justify-between mt-4 px-8">
-      <UButton
-        leading-icon="i-lucide-chevron-left"
-        :disabled="!stepper?.hasPrev"
-        @click="stepper?.prev()"
-        color="neutral"
-        variant="soft"
-        size="lg"
-        class="rounded-full"
-      />
-      <UButton
-      class="rounded-full"
-        trailing-icon="i-lucide-chevron-right"
-        :disabled="!stepper?.hasNext"
-        @click="stepper?.next()"
-        color="neutral"
-        size="lg"
-        variant="soft"
-      />
-    </div>
+    <BookingLayoutStepLayout>
+      <template #right>
+        <div class="flex gap-2 justify-between mt-4 px-8">
+          <UButton
+            v-if="stepper?.hasPrev && stepper?.hasNext"
+            icon="i-lucide-chevron-left"
+            :disabled="!stepper?.hasPrev"
+            @click="stepper?.prev()"
+            color="info"
+            variant="ghost"
+            size="lg"
+            class="rounded-full"
+          >back </UButton>
+          <UButton
+            v-if="stepper?.hasNext && stepper?.hasPrev"
+            class="rounded-full"
+            :disabled="!stepper?.hasNext"
+            @click="stepper?.next()"
+            color="info"
+            size="lg"
+          >Continue </UButton>
+        </div>  
+      </template>
+    </BookingLayoutStepLayout>
   </div>
 </template>
 
