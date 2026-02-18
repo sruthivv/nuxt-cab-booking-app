@@ -105,7 +105,7 @@ function toggleSelection(type: 'service' | 'wait' | 'cancel', item: string) {
     <!-- Collapsible Details -->
     <div 
         v-if="isOpen"
-        class="mt-6 pt-6 border-t border-gray-100 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-600 animate-[fade-in_0.2s_ease-in-out]"
+        class="mt-6 pt-6 border-t border-gray-100 grid grid-cols-1 md:grid-cols-3 gap-1 text-sm text-gray-600 animate-[fade-in_0.2s_ease-in-out]"
     >
         <!-- Services details -->
         <div class="space-y-3">
@@ -115,10 +115,10 @@ function toggleSelection(type: 'service' | 'wait' | 'cancel', item: string) {
                   v-for="item in services" 
                   :key="item"
                   @click="toggleSelection('service', item)"
-                  class="px-3 py-2 rounded-md cursor-pointer transition-colors font-medium"
+                  class="px-2 py-1 cursor-pointer transition-colors font-medium"
                   :class="[
                     selectedService === item 
-                      ? 'bg-sky-600 text-sky-100' 
+                      ? 'bg-sky-100 text-sky-400' 
                       : 'text-gray-900 hover:bg-gray-50'
                   ]"
                 >
@@ -135,10 +135,10 @@ function toggleSelection(type: 'service' | 'wait' | 'cancel', item: string) {
                   v-for="item in waitTimes" 
                   :key="item"
                   @click="toggleSelection('wait', item)"
-                  class="px-3 py-2 rounded-md cursor-pointer transition-colors font-medium"
+                  class="px-2 py-1  cursor-pointer transition-colors font-medium"
                   :class="[
                     selectedWaitTime === item 
-                      ? 'bg-sky-600 text-sky-100' 
+                      ? 'bg-sky-100 text-sky-400' 
                       : 'text-gray-900 hover:bg-gray-50'
                   ]"
                 >
@@ -155,10 +155,10 @@ function toggleSelection(type: 'service' | 'wait' | 'cancel', item: string) {
                   v-for="item in cancellations" 
                   :key="item"
                   @click="toggleSelection('cancel', item)"
-                  class="px-3 py-2 rounded-md cursor-pointer transition-colors font-medium"
+                  class="px-2 py-1  cursor-pointer transition-colors font-medium"
                   :class="[
                     selectedCancellation === item 
-                      ? 'bg-sky-600 text-sky-100' 
+                      ? 'bg-sky-100 text-sky-400' 
                       : 'text-gray-900 hover:bg-gray-50'
                   ]"
                 >
